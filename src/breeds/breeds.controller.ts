@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { BreedsService } from './breeds.service';
 import { CreateBreedDto } from './dto/create-breed.dto';
 import { UpdateBreedDto } from './dto/update-breed.dto';
@@ -17,18 +17,18 @@ export class BreedsController {
     return this.breedsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.breedsService.findOne(+id);
+  @Get(':name')
+  findOne(@Param('name') name: string) {
+    return this.breedsService.findOne(name);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBreedDto: UpdateBreedDto) {
-    return this.breedsService.update(+id, updateBreedDto);
+  @Put(':name')
+  update(@Param('name') name: string, @Body() updateBreedDto: UpdateBreedDto) {
+    return this.breedsService.update(name, updateBreedDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.breedsService.remove(+id);
+  @Delete(':name')
+  remove(@Param('name') name: string) {
+    return this.breedsService.remove(name);
   }
 }

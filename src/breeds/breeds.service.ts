@@ -15,18 +15,18 @@ export class BreedsService {
   }
 
   findAll() {
-    return `This action returns all breeds`;
+    return this.breedModel.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} breed`;
+  findOne(name: string) {
+    return this.breedModel.findOne({ name });
   }
 
-  update(id: number, updateBreedDto: UpdateBreedDto) {
-    return `This action updates a #${id} breed`;
+  update(name: string, updateBreedDto: UpdateBreedDto) {
+    return this.breedModel.updateOne({ name }, { $set: {...updateBreedDto} })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} breed`;
+  remove(name: string) {
+    return this.breedModel.deleteOne({ name });
   }
 }

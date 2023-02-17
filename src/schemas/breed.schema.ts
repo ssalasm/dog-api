@@ -7,6 +7,9 @@ export type BreedDocument = Breed & Document;
 export class Breed {
   @Prop()
   name: string;
+
+  @Prop()
+  furType: string;
 }
 
 export const BreedSchema = SchemaFactory.createForClass(Breed);
